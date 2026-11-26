@@ -1,0 +1,120 @@
+{
+  "title": {
+    "fr": "Pratiques d'Ingénierie IA",
+    "en": "AI Engineering Practices"
+  },
+  "description": {
+    "fr": "Méthodes et pratiques pour développer des systèmes IA robustes",
+    "en": "Methods and practices for developing robust AI systems"
+  },
+  "guides": [
+    {
+      "id": "api-vs-local-models",
+      "status": "draft",
+      "fr": {
+        "title": "API vs modèles locaux",
+        "description": "Décider entre les APIs de modèles hébergés et les déploiements locaux selon le contrôle, le coût et la confidentialité"
+      },
+      "en": {
+        "title": "API vs local models",
+        "description": "Decide between hosted model APIs and local deployments based on control, cost, and privacy"
+      }
+    },
+    {
+      "id": "choosing-a-model",
+      "status": "draft",
+      "fr": {
+        "title": "Choisir un modèle",
+        "description": "Comparer et sélectionner le bon modèle LLM en fonction des exigences de performance, coût et latence"
+      },
+      "en": {
+        "title": "Choosing a model",
+        "description": "Compare and select the right LLM based on performance, cost, and latency requirements"
+      }
+    },
+    {
+      "id": "ai-logs",
+      "status": "draft",
+      "fr": {
+        "title": "Logs IA",
+        "description": "Instrumenter les applications IA avec une journalisation structurée pour le débogage et l'audit"
+      },
+      "en": {
+        "title": "AI logs",
+        "description": "Instrument AI applications with structured logging for debugging and auditing"
+      }
+    },
+    {
+      "id": "agent-traces",
+      "status": "draft",
+      "fr": {
+        "title": "Traces d'agents",
+        "description": "Instrumenter les agents IA avec du tracing distribué pour observer leur exécution et déboguer les échecs"
+      },
+      "en": {
+        "title": "Agent traces",
+        "description": "Instrument AI agents with distributed tracing to observe execution and debug failures"
+      }
+    },
+    {
+      "id": "llm-monitoring",
+      "status": "draft",
+      "fr": {
+        "title": "Monitoring LLM",
+        "description": "Surveiller les métriques LLM en production : latence, utilisation de tokens, taux d'erreur et qualité"
+      },
+      "en": {
+        "title": "LLM monitoring",
+        "description": "Monitor LLM metrics in production: latency, token usage, error rates, and quality"
+      }
+    },
+    {
+      "id": "continuous-evaluation",
+      "status": "draft",
+      "fr": {
+        "title": "Évaluation continue",
+        "description": "Surveiller la qualité des modèles en production avec des pipelines d'évaluation continue et la détection de dérives"
+      },
+      "en": {
+        "title": "Continuous evaluation",
+        "description": "Monitor model quality in production with continuous evaluation pipelines and drift detection"
+      }
+    },
+    {
+      "id": "ai-application-testing",
+      "status": "draft",
+      "fr": {
+        "title": "Tests d'applications IA",
+        "description": "Tester les applications IA avec des tests unitaires déterministes, des assertions probabilistes et l'évaluation sur des jeux de données de référence"
+      },
+      "en": {
+        "title": "AI application testing",
+        "description": "Test AI applications with deterministic unit tests, probabilistic assertions, and benchmark evaluation"
+      }
+    },
+    {
+      "id": "ai-engineering",
+      "status": "draft",
+      "fr": {
+        "title": "Ingénierie IA",
+        "description": "Comprendre la discipline de l'ingénierie IA : faire le pont entre la recherche ML et le développement logiciel en production"
+      },
+      "en": {
+        "title": "AI engineering",
+        "description": "Understand the discipline of AI engineering: bridging ML research and production software development"
+      }
+    },
+    {
+      "id": "ai-system-architecture",
+      "status": "draft",
+      "fr": {
+        "title": "Architecture de système IA",
+        "description": "Concevoir des architectures évolutives et maintenables pour les applications alimentées par IA"
+      },
+      "en": {
+        "title": "AI system architecture",
+        "description": "Design scalable and maintainable architectures for AI-powered applications"
+      }
+    }
+  ]
+}

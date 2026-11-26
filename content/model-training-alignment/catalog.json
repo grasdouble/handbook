@@ -1,0 +1,72 @@
+{
+  "title": {
+    "fr": "Entraînement et alignement",
+    "en": "Training and Alignment"
+  },
+  "description": {
+    "fr": "Comprendre comment entraîner et aligner les modèles de langage",
+    "en": "Understand how to train and align language models"
+  },
+  "guides": [
+    {
+      "id": "fine-tuning",
+      "status": "draft",
+      "fr": {
+        "title": "Fine-tuning",
+        "description": "Adapter un modèle pré-entraîné à des tâches ou domaines spécifiques"
+      },
+      "en": {
+        "title": "Fine-tuning",
+        "description": "Adapt a pre-trained model to specific tasks or domains"
+      }
+    },
+    {
+      "id": "pre-training",
+      "status": "draft",
+      "fr": {
+        "title": "Pré-entraînement",
+        "description": "Comprendre le pré-entraînement des LLMs sur de vastes corpus de texte"
+      },
+      "en": {
+        "title": "Pre-training",
+        "description": "Understand LLM pre-training on vast text corpora"
+      }
+    },
+    {
+      "id": "rlhf",
+      "status": "draft",
+      "fr": {
+        "title": "RLHF",
+        "description": "Utiliser le Reinforcement Learning from Human Feedback pour améliorer les modèles"
+      },
+      "en": {
+        "title": "RLHF",
+        "description": "Use Reinforcement Learning from Human Feedback to improve models"
+      }
+    },
+    {
+      "id": "dpo",
+      "status": "draft",
+      "fr": {
+        "title": "DPO",
+        "description": "Direct Preference Optimization : une alternative simplifiée au RLHF"
+      },
+      "en": {
+        "title": "DPO",
+        "description": "Direct Preference Optimization: a simplified alternative to RLHF"
+      }
+    },
+    {
+      "id": "alignment",
+      "status": "draft",
+      "fr": {
+        "title": "Alignement",
+        "description": "Aligner le comportement des LLMs avec les valeurs et intentions humaines"
+      },
+      "en": {
+        "title": "Alignment",
+        "description": "Align LLM behavior with human values and intentions"
+      }
+    }
+  ]
+}

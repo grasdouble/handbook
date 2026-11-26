@@ -1,0 +1,180 @@
+{
+  "title": {
+    "fr": "Évaluation et Limites des LLMs",
+    "en": "LLM Evaluation & Limitations"
+  },
+  "description": {
+    "fr": "Comprendre les limitations, biais et méthodes d'évaluation des LLMs",
+    "en": "Understand the limitations, biases, and evaluation methods of LLMs"
+  },
+  "guides": [
+    {
+      "id": "open-source-vs-proprietary-models",
+      "status": "published",
+      "fr": {
+        "title": "Modèles open-source vs propriétaires",
+        "description": "Comparer les modèles IA open-source et propriétaires : compromis de coût, contrôle, performance et confidentialité"
+      },
+      "en": {
+        "title": "Open-source vs proprietary models",
+        "description": "Compare open-source and proprietary AI models: cost, control, performance, and privacy trade-offs"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-05-31",
+      "updatedAt": "2026-05-31"
+    },
+    {
+      "id": "hallucinations",
+      "status": "published",
+      "fr": {
+        "title": "Hallucinations",
+        "description": "Comprendre pourquoi les LLMs génèrent de fausses informations et comment détecter et atténuer les hallucinations"
+      },
+      "en": {
+        "title": "Hallucinations",
+        "description": "Understand why LLMs generate false information and how to detect and mitigate hallucinations"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "model-biases",
+      "status": "published",
+      "fr": {
+        "title": "Biais des modèles",
+        "description": "Explorer les sources de biais dans les modèles IA et leur impact sur les sorties et l'équité"
+      },
+      "en": {
+        "title": "Model biases",
+        "description": "Explore the sources of bias in AI models and their impact on outputs and fairness"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "llm-limitations",
+      "status": "published",
+      "fr": {
+        "title": "Limitations des LLMs",
+        "description": "Comprendre les limites inhérentes aux LLMs : coupure de connaissances, échecs de raisonnement et contraintes de contexte"
+      },
+      "en": {
+        "title": "LLM limitations",
+        "description": "Understand the inherent limitations of LLMs: knowledge cutoff, reasoning failures, and context constraints"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "how-to-evaluate-an-ai-response",
+      "status": "published",
+      "fr": {
+        "title": "Comment évaluer une réponse IA",
+        "description": "Apprendre des critères pratiques pour évaluer la qualité, la précision et la fiabilité d'une réponse LLM"
+      },
+      "en": {
+        "title": "How to evaluate an AI response",
+        "description": "Learn practical criteria for assessing the quality, accuracy, and reliability of an LLM response"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "reasoning-in-llms",
+      "status": "published",
+      "fr": {
+        "title": "Le raisonnement dans les LLMs",
+        "description": "Explorer comment les LLMs abordent les tâches de raisonnement et où ils réussissent ou échouent"
+      },
+      "en": {
+        "title": "Reasoning in LLMs",
+        "description": "Explore how LLMs approach reasoning tasks and where they succeed or fail"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "reasoning",
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "ai-benchmarks",
+      "status": "published",
+      "fr": {
+        "title": "Benchmarks IA",
+        "description": "Comprendre les principaux benchmarks utilisés pour évaluer les LLMs, leurs forces et leurs limites"
+      },
+      "en": {
+        "title": "AI benchmarks",
+        "description": "Understand the major benchmarks used to evaluate LLMs and their strengths and limitations"
+      },
+      "difficulty": "advanced",
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "automated-llm-evaluation",
+      "status": "published",
+      "fr": {
+        "title": "Évaluation automatisée des LLMs",
+        "description": "Apprendre à utiliser des métriques automatisées et des techniques LLM-as-judge pour évaluer les sorties à grande échelle"
+      },
+      "en": {
+        "title": "Automated LLM evaluation",
+        "description": "Learn how to use automated metrics and LLM-as-judge techniques to evaluate model outputs at scale"
+      },
+      "difficulty": "advanced",
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "human-evaluation-of-models",
+      "status": "published",
+      "fr": {
+        "title": "Évaluation humaine des modèles",
+        "description": "Concevoir des cadres d'évaluation humaine pour mesurer la qualité, la sécurité et l'alignement des modèles"
+      },
+      "en": {
+        "title": "Human evaluation of models",
+        "description": "Design human evaluation frameworks to assess model quality, safety, and alignment"
+      },
+      "difficulty": "advanced",
+      "tags": [
+        "evaluation",
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    }
+  ]
+}

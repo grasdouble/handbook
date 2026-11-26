@@ -1,0 +1,141 @@
+{
+  "title": {
+    "fr": "Architecture des LLMs",
+    "en": "LLM Architecture"
+  },
+  "description": {
+    "fr": "Comprendre l'architecture technique et les mécanismes de génération des LLMs",
+    "en": "Understand the technical architecture and generation mechanisms of LLMs"
+  },
+  "guides": [
+    {
+      "id": "how-does-an-llm-generate-text",
+      "status": "published",
+      "fr": {
+        "title": "Comment un LLM génère-t-il du texte ?",
+        "description": "Comprendre le processus de génération token par token derrière chaque réponse d'un LLM"
+      },
+      "en": {
+        "title": "How does an LLM generate text?",
+        "description": "Understand the token-by-token generation process behind every LLM response"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "tokens",
+        "llm"
+      ],
+      "publishedAt": "2026-05-31",
+      "updatedAt": "2026-05-31"
+    },
+    {
+      "id": "transformers",
+      "status": "published",
+      "fr": {
+        "title": "Transformers",
+        "description": "Comprendre l'architecture Transformer qui alimente les LLMs modernes : encodeur, décodeur et auto-attention"
+      },
+      "en": {
+        "title": "Transformers",
+        "description": "Understand the Transformer architecture that powers modern LLMs: encoder, decoder, and self-attention"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "attention-mechanism",
+      "status": "published",
+      "fr": {
+        "title": "Mécanisme d'attention",
+        "description": "Plonger dans le mécanisme d'attention et comprendre comment il permet aux LLMs de se concentrer sur les parties pertinentes de l'entrée"
+      },
+      "en": {
+        "title": "Attention mechanism",
+        "description": "Dive into the attention mechanism and understand how it lets LLMs focus on relevant parts of the input"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "generation-parameters",
+      "status": "published",
+      "fr": {
+        "title": "Paramètres de génération",
+        "description": "Maîtriser tous les paramètres de génération LLM : temperature, top-p, top-k, max tokens et stop sequences"
+      },
+      "en": {
+        "title": "Generation parameters",
+        "description": "Master all LLM generation parameters: temperature, top-p, top-k, max tokens, and stop sequences"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "generation",
+        "sampling",
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "temperature",
+      "status": "published",
+      "fr": {
+        "title": "Température",
+        "description": "Comprendre le paramètre de température et comment il contrôle l'aléatoire des sorties LLM"
+      },
+      "en": {
+        "title": "Temperature",
+        "description": "Understand the temperature parameter and how it controls the randomness of LLM outputs"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "top-p",
+      "status": "published",
+      "fr": {
+        "title": "Top-P",
+        "description": "Comprendre comment fonctionne l'échantillonnage Top-P (nucleus) et comment l'utiliser pour contrôler la diversité des sorties"
+      },
+      "en": {
+        "title": "Top-P",
+        "description": "Learn how Top-P (nucleus) sampling works and how to use it to control output diversity"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "id": "top-k",
+      "status": "published",
+      "fr": {
+        "title": "Top-K",
+        "description": "Comprendre la stratégie d'échantillonnage Top-K et quand la préférer aux autres méthodes"
+      },
+      "en": {
+        "title": "Top-K",
+        "description": "Understand the Top-K sampling strategy and when to prefer it over other sampling methods"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    }
+  ]
+}

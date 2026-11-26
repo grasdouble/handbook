@@ -1,0 +1,178 @@
+{
+  "title": {
+    "fr": "Fondamentaux des LLMs",
+    "en": "LLM Fundamentals"
+  },
+  "description": {
+    "fr": "Concepts de base pour comprendre ce qu'est un LLM et comment il fonctionne",
+    "en": "Core concepts to understand what an LLM is and how it works"
+  },
+  "guides": [
+    {
+      "id": "what-is-artificial-intelligence",
+      "status": "published",
+      "fr": {
+        "title": "Qu'est-ce que l'Intelligence Artificielle ?",
+        "description": "Une introduction à l'intelligence artificielle, son histoire et les concepts clés derrière les systèmes IA modernes"
+      },
+      "en": {
+        "title": "What is Artificial Intelligence?",
+        "description": "An introduction to artificial intelligence, its history, and the key concepts behind modern AI systems"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-05-31",
+      "updatedAt": "2026-05-31"
+    },
+    {
+      "id": "ai-machine-learning-and-deep-learning",
+      "status": "published",
+      "fr": {
+        "title": "IA, Machine Learning et Deep Learning",
+        "description": "Comprendre la relation entre intelligence artificielle, machine learning et deep learning"
+      },
+      "en": {
+        "title": "AI, Machine Learning, and Deep Learning",
+        "description": "Understand the relationship between artificial intelligence, machine learning, and deep learning"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-05-31",
+      "updatedAt": "2026-05-31"
+    },
+    {
+      "id": "generative-ai-definition-and-use-cases",
+      "status": "published",
+      "fr": {
+        "title": "IA générative : définition et cas d'usage",
+        "description": "Découvrir ce qu'est l'IA générative, en quoi elle diffère des autres approches et où elle s'applique"
+      },
+      "en": {
+        "title": "Generative AI: definition and use cases",
+        "description": "Discover what generative AI is, how it differs from other AI approaches, and where it is applied"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-05-31",
+      "updatedAt": "2026-05-31"
+    },
+    {
+      "id": "what-is-an-llm",
+      "status": "published",
+      "fr": {
+        "title": "Qu'est-ce qu'un LLM ?",
+        "description": "Comprendre ce qu'est un Large Language Model, comment il est entraîné et en quoi il diffère du logiciel traditionnel"
+      },
+      "en": {
+        "title": "What is an LLM?",
+        "description": "Learn what a Large Language Model is, how it is trained, and what makes it different from traditional software"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-05-31",
+      "updatedAt": "2026-05-31"
+    },
+    {
+      "id": "different-types-of-ai-models",
+      "status": "published",
+      "fr": {
+        "title": "Les différents types de modèles IA",
+        "description": "Explorer le paysage des modèles IA : modèles de langage, modèles d'image et modèles multimodaux"
+      },
+      "en": {
+        "title": "Different types of AI models",
+        "description": "Explore the landscape of AI models: language models, image models, and multimodal models"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "llm"
+      ],
+      "publishedAt": "2026-05-31",
+      "updatedAt": "2026-05-31"
+    },
+    {
+      "id": "tokens",
+      "status": "published",
+      "fr": {
+        "title": "Tokens",
+        "description": "Comprendre ce que sont les tokens et pourquoi ils constituent l'unité fondamentale du texte dans les LLMs"
+      },
+      "en": {
+        "title": "Tokens",
+        "description": "Understand what tokens are and why they are the fundamental unit of text in LLMs"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "tokens",
+        "llm"
+      ],
+      "publishedAt": "2026-05-31",
+      "updatedAt": "2026-05-31"
+    },
+    {
+      "id": "tokenization",
+      "status": "published",
+      "fr": {
+        "title": "Tokenisation",
+        "description": "Découvrir comment fonctionne la tokenisation et comment les tokenizers découpent le texte en tokens"
+      },
+      "en": {
+        "title": "Tokenization",
+        "description": "Discover how tokenization works and how tokenizers split text into tokens"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "tokens",
+        "llm"
+      ],
+      "publishedAt": "2026-05-31",
+      "updatedAt": "2026-05-31"
+    },
+    {
+      "id": "context-window",
+      "status": "published",
+      "fr": {
+        "title": "Fenêtre de contexte",
+        "description": "Comprendre ce qu'est la fenêtre de contexte et comment sa taille affecte ce qu'un LLM peut traiter"
+      },
+      "en": {
+        "title": "Context window",
+        "description": "Learn what the context window is and how its size affects what an LLM can process"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "tokens",
+        "llm"
+      ],
+      "publishedAt": "2026-05-31",
+      "updatedAt": "2026-05-31"
+    },
+    {
+      "id": "embeddings",
+      "status": "published",
+      "fr": {
+        "title": "Embeddings",
+        "description": "Comprendre comment les embeddings représentent le texte sous forme de vecteurs et permettent la similarité sémantique"
+      },
+      "en": {
+        "title": "Embeddings",
+        "description": "Understand how embeddings represent text as vectors and enable semantic similarity"
+      },
+      "difficulty": "beginner",
+      "tags": [
+        "embeddings",
+        "llm"
+      ],
+      "publishedAt": "2026-06-01",
+      "updatedAt": "2026-06-01"
+    }
+  ]
+}

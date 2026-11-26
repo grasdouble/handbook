@@ -1,0 +1,31 @@
+{
+  "title": {
+    "fr": "Architecture front-end",
+    "en": "Front-end Architecture"
+  },
+  "description": {
+    "fr": "Concevoir des systèmes front-end scalables grâce aux patterns micro-frontend avec React et single-spa",
+    "en": "Design scalable front-end systems using micro-frontend patterns with React and single-spa"
+  },
+  "guides": [
+    {
+      "id": "react-micro-frontends",
+      "status": "published",
+      "fr": {
+        "title": "Micro-frontends avec React et single-spa",
+        "description": "Architecturer une application en micro-frontends indépendants avec single-spa, des import maps, des parcels React et des dépendances partagées."
+      },
+      "en": {
+        "title": "Micro-frontends with React and single-spa",
+        "description": "Architect an application into independent micro-frontends with single-spa, import maps, React parcels and shared dependencies."
+      },
+      "difficulty": "advanced",
+      "tags": [
+        "micro-frontend",
+        "architecture"
+      ],
+      "publishedAt": "2026-05-10",
+      "updatedAt": "2026-05-31"
+    }
+  ]
+}

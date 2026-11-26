@@ -1,0 +1,4 @@
+{
+  "plugins": ["react"],
+  "ignorePatterns": ["src/generated/**", "src/routeTree.gen.ts"]
+}

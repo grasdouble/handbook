@@ -1,0 +1,47 @@
+{
+  "categories": [
+    {
+      "id": "ia-llm",
+      "title": {
+        "fr": "IA & LLM",
+        "en": "AI & LLM"
+      },
+      "catalogs": [
+        "llm-fundamentals",
+        "llm-architecture",
+        "llm-evaluation-limits",
+        "prompting-fundamentals",
+        "prompting-advanced",
+        "rag-fundamentals",
+        "rag-implementation",
+        "rag-advanced",
+        "agents-fundamentals",
+        "agents-orchestration-workflows",
+        "model-training-alignment",
+        "model-optimization-deployment",
+        "ai-engineering-practices",
+        "ai-production-operations"
+      ]
+    },
+    {
+      "id": "tooling",
+      "title": {
+        "fr": "Tooling",
+        "en": "Tooling"
+      },
+      "catalogs": [
+        "tooling-essentials"
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": {
+        "fr": "Architecture",
+        "en": "Architecture"
+      },
+      "catalogs": [
+        "frontend-architecture"
+      ]
+    }
+  ]
+}

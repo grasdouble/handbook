@@ -1,0 +1,130 @@
+{
+  "title": {
+    "fr": "Techniques avancées de prompting",
+    "en": "Advanced Prompting Techniques"
+  },
+  "description": {
+    "fr": "Explorer les techniques avancées pour des cas d'usage complexes et des sorties structurées",
+    "en": "Explore advanced techniques for complex use cases and structured outputs"
+  },
+  "guides": [
+    {
+      "id": "chain-of-thought",
+      "status": "published",
+      "fr": {
+        "title": "Chain of Thought",
+        "description": "Améliorer le raisonnement du modèle en le guidant à travers des étapes logiques"
+      },
+      "en": {
+        "title": "Chain of Thought",
+        "description": "Improve model reasoning by guiding it through logical steps"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "prompting",
+        "reasoning",
+        "llm"
+      ],
+      "publishedAt": "2026-06-07",
+      "updatedAt": "2026-06-07"
+    },
+    {
+      "id": "self-consistency",
+      "status": "published",
+      "fr": {
+        "title": "Auto-cohérence",
+        "description": "Améliorer la fiabilité des réponses en générant plusieurs solutions et en choisissant la plus cohérente"
+      },
+      "en": {
+        "title": "Self-consistency",
+        "description": "Improve response reliability by generating multiple solutions and choosing the most consistent one"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "prompting",
+        "reasoning",
+        "llm"
+      ],
+      "publishedAt": "2026-06-07",
+      "updatedAt": "2026-06-07"
+    },
+    {
+      "id": "prompt-templates",
+      "status": "published",
+      "fr": {
+        "title": "Templates de prompts",
+        "description": "Utiliser des templates réutilisables pour standardiser les interactions avec un LLM"
+      },
+      "en": {
+        "title": "Prompt templates",
+        "description": "Use reusable templates to standardize interactions with an LLM"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "prompting",
+        "llm"
+      ],
+      "publishedAt": "2026-06-07",
+      "updatedAt": "2026-06-07"
+    },
+    {
+      "id": "json-generation",
+      "status": "published",
+      "fr": {
+        "title": "Génération de JSON",
+        "description": "Obtenir des réponses structurées au format JSON pour une intégration facile"
+      },
+      "en": {
+        "title": "JSON generation",
+        "description": "Get structured responses in JSON format for easy integration"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "prompting",
+        "evaluation",
+        "llm"
+      ],
+      "publishedAt": "2026-06-07",
+      "updatedAt": "2026-06-07"
+    },
+    {
+      "id": "structured-outputs",
+      "status": "published",
+      "fr": {
+        "title": "Sorties structurées",
+        "description": "Forcer le modèle à générer des sorties dans un format spécifique et prédictible"
+      },
+      "en": {
+        "title": "Structured outputs",
+        "description": "Force the model to generate outputs in a specific and predictable format"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "prompting",
+        "llm"
+      ],
+      "publishedAt": "2026-06-07",
+      "updatedAt": "2026-06-07"
+    },
+    {
+      "id": "output-validation",
+      "status": "published",
+      "fr": {
+        "title": "Validation des sorties",
+        "description": "Mettre en place des stratégies de validation pour garantir la qualité des réponses"
+      },
+      "en": {
+        "title": "Output validation",
+        "description": "Implement validation strategies to ensure response quality"
+      },
+      "difficulty": "intermediate",
+      "tags": [
+        "prompting",
+        "evaluation",
+        "llm"
+      ],
+      "publishedAt": "2026-06-07",
+      "updatedAt": "2026-06-07"
+    }
+  ]
+}

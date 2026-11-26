@@ -1,0 +1,84 @@
+{
+  "title": {
+    "fr": "Orchestration et workflows",
+    "en": "Orchestration and Workflows"
+  },
+  "description": {
+    "fr": "Architecturer des systèmes multi-agents et des workflows complexes",
+    "en": "Architect multi-agent systems and complex workflows"
+  },
+  "guides": [
+    {
+      "id": "prompt-chaining",
+      "status": "draft",
+      "fr": {
+        "title": "Chaînage de prompts",
+        "description": "Enchaîner plusieurs prompts pour décomposer des tâches complexes"
+      },
+      "en": {
+        "title": "Prompt chaining",
+        "description": "Chain multiple prompts to break down complex tasks"
+      }
+    },
+    {
+      "id": "llm-workflows",
+      "status": "draft",
+      "fr": {
+        "title": "Workflows LLM",
+        "description": "Structurer des enchaînements de tâches impliquant plusieurs appels LLM"
+      },
+      "en": {
+        "title": "LLM workflows",
+        "description": "Structure task sequences involving multiple LLM calls"
+      }
+    },
+    {
+      "id": "multi-agent-architectures",
+      "status": "draft",
+      "fr": {
+        "title": "Architectures multi-agents",
+        "description": "Concevoir des systèmes où plusieurs agents spécialisés collaborent"
+      },
+      "en": {
+        "title": "Multi-agent architectures",
+        "description": "Design systems where multiple specialized agents collaborate"
+      }
+    },
+    {
+      "id": "agentic-workflows",
+      "status": "draft",
+      "fr": {
+        "title": "Workflows agentiques",
+        "description": "Concevoir des workflows où les agents collaborent pour résoudre des problèmes complexes"
+      },
+      "en": {
+        "title": "Agentic workflows",
+        "description": "Design workflows where agents collaborate to solve complex problems"
+      }
+    },
+    {
+      "id": "mcp-model-context-protocol",
+      "status": "draft",
+      "fr": {
+        "title": "MCP (Model Context Protocol)",
+        "description": "Utiliser le Model Context Protocol pour standardiser les interactions entre agents et outils"
+      },
+      "en": {
+        "title": "MCP (Model Context Protocol)",
+        "description": "Use the Model Context Protocol to standardize interactions between agents and tools"
+      }
+    },
+    {
+      "id": "model-routing",
+      "status": "draft",
+      "fr": {
+        "title": "Routage de modèles",
+        "description": "Diriger intelligemment les requêtes vers les modèles les plus appropriés"
+      },
+      "en": {
+        "title": "Model routing",
+        "description": "Intelligently route requests to the most appropriate models"
+      }
+    }
+  ]
+}

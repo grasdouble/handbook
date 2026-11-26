@@ -1,0 +1,5 @@
+{
+  "semi": true,
+  "singleQuote": true,
+  "ignorePatterns": ["content/**", "src/generated/**", "src/routeTree.gen.ts", "pnpm-lock.yaml"]
+}

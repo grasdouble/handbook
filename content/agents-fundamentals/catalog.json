@@ -1,0 +1,96 @@
+{
+  "title": {
+    "fr": "Comprendre les agents IA",
+    "en": "Understanding AI Agents"
+  },
+  "description": {
+    "fr": "Découvrir ce que sont les agents IA, leurs capacités et comment ils fonctionnent",
+    "en": "Discover what AI agents are, their capabilities, and how they work"
+  },
+  "guides": [
+    {
+      "id": "function-calling",
+      "status": "draft",
+      "fr": {
+        "title": "Appel de fonctions",
+        "description": "Permettre aux LLMs d'appeler des fonctions externes pour étendre leurs capacités"
+      },
+      "en": {
+        "title": "Function calling",
+        "description": "Allow LLMs to call external functions to extend their capabilities"
+      }
+    },
+    {
+      "id": "tool-calling",
+      "status": "draft",
+      "fr": {
+        "title": "Appel d'outils",
+        "description": "Donner aux agents la capacité d'utiliser des outils externes pour accomplir des tâches"
+      },
+      "en": {
+        "title": "Tool calling",
+        "description": "Give agents the ability to use external tools to accomplish tasks"
+      }
+    },
+    {
+      "id": "what-is-an-ai-agent",
+      "status": "draft",
+      "fr": {
+        "title": "Qu'est-ce qu'un agent IA ?",
+        "description": "Comprendre ce qu'est un agent IA et en quoi il diffère d'un simple LLM"
+      },
+      "en": {
+        "title": "What is an AI agent?",
+        "description": "Understand what an AI agent is and how it differs from a simple LLM"
+      }
+    },
+    {
+      "id": "agent-memory",
+      "status": "draft",
+      "fr": {
+        "title": "Mémoire des agents",
+        "description": "Comprendre comment les agents utilisent la mémoire pour maintenir le contexte et apprendre"
+      },
+      "en": {
+        "title": "Agent memory",
+        "description": "Understand how agents use memory to maintain context and learn"
+      }
+    },
+    {
+      "id": "task-planning",
+      "status": "draft",
+      "fr": {
+        "title": "Planification de tâches",
+        "description": "Découvrir comment les agents décomposent des objectifs complexes en tâches exécutables"
+      },
+      "en": {
+        "title": "Task planning",
+        "description": "Discover how agents break down complex goals into executable tasks"
+      }
+    },
+    {
+      "id": "agentic-rag",
+      "status": "draft",
+      "fr": {
+        "title": "RAG agentique",
+        "description": "Combiner les capacités des agents avec le RAG pour une recherche d'information intelligente"
+      },
+      "en": {
+        "title": "Agentic RAG",
+        "description": "Combine agent capabilities with RAG for intelligent information retrieval"
+      }
+    },
+    {
+      "id": "autonomous-agents",
+      "status": "draft",
+      "fr": {
+        "title": "Agents autonomes",
+        "description": "Découvrir comment les agents peuvent agir de manière autonome pour atteindre des objectifs"
+      },
+      "en": {
+        "title": "Autonomous agents",
+        "description": "Discover how agents can act autonomously to achieve goals"
+      }
+    }
+  ]
+}

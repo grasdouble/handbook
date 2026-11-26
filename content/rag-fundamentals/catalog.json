@@ -1,0 +1,108 @@
+{
+  "title": {
+    "fr": "Fondamentaux du RAG",
+    "en": "RAG Fundamentals"
+  },
+  "description": {
+    "fr": "Comprendre les concepts de base du RAG et de la recherche vectorielle",
+    "en": "Understand the core concepts of RAG and vector search"
+  },
+  "guides": [
+    {
+      "id": "what-is-rag",
+      "status": "draft",
+      "fr": {
+        "title": "Qu'est-ce que le RAG ?",
+        "description": "Comprendre la génération augmentée par récupération et comment elle combine la recherche avec la génération LLM"
+      },
+      "en": {
+        "title": "What is RAG?",
+        "description": "Understand retrieval-augmented generation and how it combines search with LLM generation"
+      }
+    },
+    {
+      "id": "why-use-rag",
+      "status": "draft",
+      "fr": {
+        "title": "Pourquoi utiliser le RAG ?",
+        "description": "Découvrir les avantages du RAG : connaissances à jour, sources vérifiables et réduction des hallucinations"
+      },
+      "en": {
+        "title": "Why use RAG?",
+        "description": "Discover the benefits of RAG: up-to-date knowledge, verifiable sources, and reduced hallucinations"
+      }
+    },
+    {
+      "id": "limitations-of-an-llm-without-rag",
+      "status": "draft",
+      "fr": {
+        "title": "Limitations d'un LLM sans RAG",
+        "description": "Comprendre pourquoi les LLMs seuls ne suffisent pas pour des connaissances spécifiques et à jour"
+      },
+      "en": {
+        "title": "Limitations of an LLM without RAG",
+        "description": "Understand why LLMs alone are insufficient for domain-specific and up-to-date knowledge"
+      }
+    },
+    {
+      "id": "semantic-similarity",
+      "status": "draft",
+      "fr": {
+        "title": "Similarité sémantique",
+        "description": "Apprendre comment les embeddings capturent le sens et permettent la recherche par similarité sémantique"
+      },
+      "en": {
+        "title": "Semantic similarity",
+        "description": "Learn how embeddings capture meaning and enable semantic similarity search"
+      }
+    },
+    {
+      "id": "vector-search",
+      "status": "draft",
+      "fr": {
+        "title": "Recherche vectorielle",
+        "description": "Apprendre comment fonctionne la recherche vectorielle : embedding de requêtes, recherche de voisins proches et classement"
+      },
+      "en": {
+        "title": "Vector search",
+        "description": "Learn how vector search works: query embedding, nearest neighbor search, and ranking"
+      }
+    },
+    {
+      "id": "vectors-and-distance",
+      "status": "draft",
+      "fr": {
+        "title": "Vecteurs et distance",
+        "description": "Comprendre les vecteurs, les espaces vectoriels et comment les métriques de distance mesurent la similarité"
+      },
+      "en": {
+        "title": "Vectors and distance",
+        "description": "Understand vectors, vector spaces, and how distance metrics measure similarity"
+      }
+    },
+    {
+      "id": "vector-databases",
+      "status": "draft",
+      "fr": {
+        "title": "Bases de données vectorielles",
+        "description": "Comprendre les bases de données vectorielles, leurs index et pourquoi elles sont essentielles pour le RAG"
+      },
+      "en": {
+        "title": "Vector databases",
+        "description": "Understand vector databases, their indexes, and why they are essential for RAG"
+      }
+    },
+    {
+      "id": "long-context-vs-rag",
+      "status": "draft",
+      "fr": {
+        "title": "Long contexte vs RAG",
+        "description": "Comparer les fenêtres de contexte longues avec le RAG pour fournir des connaissances externes aux LLMs"
+      },
+      "en": {
+        "title": "Long context vs RAG",
+        "description": "Compare long context windows with RAG for providing external knowledge to LLMs"
+      }
+    }
+  ]
+}
