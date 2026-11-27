@@ -80,7 +80,7 @@ function Document({ children }: { children: ReactNode }) {
                       {labels.guides}
                     </Link>
                   </nav>
-                  <nav aria-label={labels.languages}>
+                  <nav className="site-language" aria-label={labels.languages}>
                     <TranslationLink
                       activeLanguage={language}
                       catalogId={catalogId}

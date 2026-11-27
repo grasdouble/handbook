@@ -10,14 +10,27 @@ export interface CatalogIndexProps {
 export function CatalogIndex({ language, categories }: CatalogIndexProps) {
   const strings =
     language === 'fr'
-      ? { title: 'Bibliothèque', empty: 'Aucun catalogue disponible.' }
-      : { title: 'Library', empty: 'No catalogs are available.' };
+      ? {
+          title: 'Bibliothèque',
+          description:
+            'Des parcours et des guides de référence sur l’IA, l’architecture logicielle et les outils de développement.',
+          empty: 'Aucun catalogue disponible.',
+        }
+      : {
+          title: 'Library',
+          description:
+            'Learning paths and reference guides on AI, software architecture, and developer tools.',
+          empty: 'No catalogs are available.',
+        };
 
   return (
     <Container size="xl" className="library-page">
       <header className="page-intro">
         <Text as="h1" variant="h1">
           {strings.title}
+        </Text>
+        <Text as="p" variant="body-large" color="secondary">
+          {strings.description}
         </Text>
       </header>
       {categories.length === 0 ? (
@@ -42,7 +55,11 @@ export function CatalogIndex({ language, categories }: CatalogIndexProps) {
                     className="catalog-link"
                   >
                     <Card className="catalog-card">
-                      <Stack direction="vertical" spacing="compact">
+                      <Stack
+                        direction="vertical"
+                        spacing="compact"
+                        className="catalog-card-content"
+                      >
                         <Text as="h3" variant="h3">
                           {catalog.title[language]}
                         </Text>

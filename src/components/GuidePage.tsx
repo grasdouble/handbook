@@ -189,7 +189,7 @@ export function GuidePage({ language, catalog, guide, markdown }: GuidePageProps
   );
 
   return (
-    <Container size="xl" className="library-page guide-page">
+    <Container size="xl" className="library-page guide-reading-layout">
       <nav className="breadcrumb" aria-label={isFrench ? 'Fil d’Ariane' : 'Breadcrumb'}>
         <Link to="/$lang/$catalogId/" params={{ lang: language, catalogId: catalog.id }}>
           {strings.back}
@@ -231,27 +231,25 @@ export function GuidePage({ language, catalog, guide, markdown }: GuidePageProps
           </ul>
         </div>
       </header>
-      <div className="guide-reading-layout">
-        {headings.length > 0 && (
-          <>
-            <nav className="guide-toc" aria-label={strings.contents}>
-              <Text as="h2" variant="h4">
-                {strings.contents}
-              </Text>
-              {contents}
-            </nav>
-            <details className="guide-toc guide-toc-mobile">
-              <summary>{strings.contents}</summary>
-              <nav aria-label={strings.contents}>{contents}</nav>
-            </details>
-          </>
-        )}
-        <article className="markdown-content">
-          <ReactMarkdown remarkPlugins={[remarkGfm, addHeadingMetadata]} components={components}>
-            {markdown}
-          </ReactMarkdown>
-        </article>
-      </div>
+      {headings.length > 0 && (
+        <>
+          <nav className="guide-toc" aria-label={strings.contents}>
+            <Text as="h2" variant="h4">
+              {strings.contents}
+            </Text>
+            {contents}
+          </nav>
+          <details className="guide-toc guide-toc-mobile">
+            <summary>{strings.contents}</summary>
+            <nav aria-label={strings.contents}>{contents}</nav>
+          </details>
+        </>
+      )}
+      <article className="markdown-content">
+        <ReactMarkdown remarkPlugins={[remarkGfm, addHeadingMetadata]} components={components}>
+          {markdown}
+        </ReactMarkdown>
+      </article>
       {(previous || next) && (
         <nav
           className="guide-pagination"

@@ -13,6 +13,10 @@ pnpm dev
 
 `pnpm build` creates a static site in `dist/client`. Run `pnpm preview` to serve those exact files locally. To check changes, run `pnpm lint`, `pnpm format:check`, `pnpm typecheck` (after the build), `pnpm test`, and `pnpm test:e2e` (after `pnpm exec playwright install chromium`).
 
+## Site theme
+
+`src/handbook.css` defines the shared palette, typography, and responsive layouts. The light and dark palettes follow the system color preference and use local system fonts.
+
 ## Edit a guide
 
 - Keep French and English bodies in sibling `<guide-id>.fr.md` and `<guide-id>.en.md` files.

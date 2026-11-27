@@ -19,10 +19,12 @@ test('serves both translations directly without JavaScript', async ({ browser, b
       const response = await page.goto('/' + locale + path);
       expect(response?.status()).toBe(200);
       await expect(page.getByRole('heading', { level: 1, name: title })).toBeVisible();
+      await expect(page.getByRole('link', { name: 'Handbook', exact: true })).toBeVisible();
       await expect(page.locator('html')).toHaveAttribute('lang', locale);
       await expect(page.locator('link[rel=alternate][hreflang]')).toHaveCount(2);
     }
     await page.goto('/');
+    await expect(page.getByRole('heading', { level: 1, name: 'Handbook', exact: true })).toBeVisible();
     await expect(page.getByRole('link', { name: 'English' })).toHaveAttribute('href', '/en/');
     await expect(page.getByRole('link', { name: 'Français' })).toHaveAttribute('href', '/fr/');
   } finally {
@@ -71,4 +73,24 @@ test('renders code and diagrams and makes the table of contents navigable', asyn
   await page.getByRole('link', { name: 'The actual bet' }).click();
   await expect(page).toHaveURL(/#the-actual-bet$/);
   await expect(page.getByRole('heading', { name: 'The actual bet' })).toBeInViewport();
+});
+
+test('keeps the guide readable on a narrow dark display', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.emulateMedia({ colorScheme: 'dark', reducedMotion: 'reduce' });
+  await page.goto('/en/frontend-architecture/react-micro-frontends/');
+
+  await expect(page.locator('html')).toHaveCSS('color-scheme', 'dark');
+  const summary = page.locator('summary').filter({ hasText: 'In this guide' });
+  const section = page.getByRole('link', { name: 'The actual bet' });
+  await expect(section).toBeHidden();
+  await summary.click();
+  await section.click();
+  await expect(page).toHaveURL(/#the-actual-bet$/);
+
+  const code = page.locator('pre').filter({ hasText: 'registerApplication' }).first();
+  expect(await code.evaluate((block) => block.scrollWidth > block.clientWidth)).toBe(true);
+  expect(
+    await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth),
+  ).toBeLessThanOrEqual(0);
 });

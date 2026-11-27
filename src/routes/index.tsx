@@ -16,8 +16,10 @@ function LanguagePicker() {
   }, [navigate]);
 
   return (
-    <section>
-      <h1>Handbook</h1>
+    <section className="library-page">
+      <header className="page-intro">
+        <h1>Handbook</h1>
+      </header>
       <ul>
         <li>
           <Link
