@@ -24,7 +24,9 @@ test('serves both translations directly without JavaScript', async ({ browser, b
       await expect(page.locator('link[rel=alternate][hreflang]')).toHaveCount(2);
     }
     await page.goto('/');
-    await expect(page.getByRole('heading', { level: 1, name: 'Handbook', exact: true })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { level: 1, name: 'Handbook', exact: true }),
+    ).toBeVisible();
     await expect(page.getByRole('link', { name: 'English' })).toHaveAttribute('href', '/en/');
     await expect(page.getByRole('link', { name: 'Français' })).toHaveAttribute('href', '/fr/');
   } finally {
