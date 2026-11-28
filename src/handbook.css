@@ -382,6 +382,15 @@ input:focus-visible {
     --handbook-space: 0.5rem;
   }
 
+  .site-brand {
+    gap: 0.5rem;
+  }
+
+  .site-brand-product {
+    margin-inline-start: 0;
+    padding-inline-start: 0.5rem;
+  }
+
   .site-nav a,
   .site-language a {
     padding-inline: 0.45rem;
