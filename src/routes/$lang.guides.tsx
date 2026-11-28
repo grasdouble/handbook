@@ -6,7 +6,7 @@ import { pageHead } from '../locale';
 
 export const Route = createFileRoute('/$lang/guides')({
   validateSearch: normalizeFilters,
-  search: { middlewares: [stripSearchParams({ q: '', tags: [], difficulty: [] })] },
+  search: { middlewares: [stripSearchParams({ tags: [], difficulty: [] })] },
   head: ({
     match: {
       context: { language },

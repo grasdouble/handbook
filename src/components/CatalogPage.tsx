@@ -1,6 +1,10 @@
-import { Badge, Container, Text } from '@grasdouble/lufa_design-system';
 import { Link } from '@tanstack/react-router';
 import type { Catalog, Language } from '../library';
+import { getCatalogArtwork } from './catalog-artwork';
+import { CatalogHero } from './CatalogHero';
+import { GuideCard } from './GuideCard';
+import { HandbookIcon } from './HandbookIcon';
+import '../catalog-library.css';
 
 export interface CatalogPageProps {
   language: Language;
@@ -11,79 +15,80 @@ export function CatalogPage({ language, catalog }: CatalogPageProps) {
   const strings =
     language === 'fr'
       ? {
+          label: 'GrasDouble · Catalogue',
           back: 'Tous les catalogues',
           guides: 'Guides',
           published: 'Publié le',
           updated: 'Mis à jour le',
-          difficulty: { beginner: 'Débutant', intermediate: 'Intermédiaire', advanced: 'Avancé' },
+          empty: 'Aucun guide disponible.',
         }
       : {
+          label: 'GrasDouble · Catalog',
           back: 'All catalogs',
           guides: 'Guides',
           published: 'Published',
           updated: 'Updated',
-          difficulty: { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' },
+          empty: 'No guides available.',
         };
-  const formatDate = (value: string) =>
-    new Intl.DateTimeFormat(language, { dateStyle: 'medium', timeZone: 'UTC' }).format(
-      new Date(value),
-    );
+  const dateFormat = new Intl.DateTimeFormat(language, { dateStyle: 'medium', timeZone: 'UTC' });
+  const count = catalog.guides.length;
 
   return (
-    <Container size="xl" className="library-page">
-      <nav className="breadcrumb" aria-label={language === 'fr' ? 'Fil d’Ariane' : 'Breadcrumb'}>
-        <Link to="/$lang/" params={{ lang: language }}>
+    <div className="catalog-library catalog-detail">
+      <CatalogHero
+        label={strings.label}
+        title={catalog.title[language]}
+        description={catalog.description[language]}
+        artwork={getCatalogArtwork(catalog.id)}
+      >
+        <Link className="catalog-back" to="/$lang/" params={{ lang: language }} hash="catalogs">
+          <HandbookIcon name="arrow" />
           {strings.back}
         </Link>
-      </nav>
-      <header className="page-intro catalog-intro">
-        <Text as="h1" variant="h1">
-          {catalog.title[language]}
-        </Text>
-        <Text as="p" variant="body-large" color="secondary">
-          {catalog.description[language]}
-        </Text>
-      </header>
-      <section className="catalog-guides" aria-labelledby="catalog-guides-title">
-        <Text as="h2" id="catalog-guides-title" variant="h2">
-          {strings.guides}
-        </Text>
-        {catalog.guides.length === 0 ? (
-          <p className="empty-state">
-            {language === 'fr' ? 'Aucun guide disponible.' : 'No guides available.'}
+      </CatalogHero>
+      <section
+        className="guide-results catalog-detail-guides"
+        aria-labelledby="catalog-guides-title"
+      >
+        <header className="guide-results-header">
+          <h2 className="guide-results-title" id="catalog-guides-title">
+            <HandbookIcon name="book" />
+            {strings.guides}
+          </h2>
+          <p className="result-count">
+            {count} {count === 1 ? 'guide' : 'guides'}
           </p>
+        </header>
+        {count === 0 ? (
+          <p className="empty-state">{strings.empty}</p>
         ) : (
-          <ol className="catalog-guide-list">
-            {catalog.guides.map((guide) => (
-              <li className="catalog-guide-item" key={guide.id}>
-                <Link
-                  to="/$lang/$catalogId/$guideId/"
-                  params={{ lang: language, catalogId: catalog.id, guideId: guide.id }}
-                  className="catalog-guide-link"
-                >
-                  <span className="catalog-guide-copy">
-                    <Text as="h3" variant="h3">
-                      {guide.title[language]}
-                    </Text>
-                    <Text as="p" variant="body" color="secondary">
-                      {guide.description[language]}
-                    </Text>
-                  </span>
-                  <span className="catalog-guide-meta">
-                    <Badge variant="default">{strings.difficulty[guide.difficulty]}</Badge>
-                    <span className="catalog-guide-date">
-                      {guide.updatedAt ? strings.updated : strings.published}{' '}
-                      <time dateTime={guide.updatedAt ?? guide.publishedAt}>
-                        {formatDate(guide.updatedAt ?? guide.publishedAt)}
-                      </time>
-                    </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
+          <ol className="guide-card-grid catalog-detail-list" role="list">
+            {catalog.guides.map((guide) => {
+              const displayedDate = guide.updatedAt ?? guide.publishedAt;
+              return (
+                <li key={guide.id}>
+                  <GuideCard
+                    guide={guide}
+                    catalogId={catalog.id}
+                    language={language}
+                    context={
+                      <>
+                        <HandbookIcon name="calendar" />
+                        <span>
+                          {guide.updatedAt ? strings.updated : strings.published}{' '}
+                          <time dateTime={displayedDate}>
+                            {dateFormat.format(new Date(displayedDate))}
+                          </time>
+                        </span>
+                      </>
+                    }
+                  />
+                </li>
+              );
+            })}
           </ol>
         )}
       </section>
-    </Container>
+    </div>
   );
 }

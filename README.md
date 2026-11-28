@@ -13,15 +13,20 @@ pnpm dev
 
 `pnpm build` creates a static site in `dist/client`. Run `pnpm preview` to serve those exact files locally. To check changes, run `pnpm lint`, `pnpm format:check`, `pnpm typecheck` (after the build), `pnpm test`, and `pnpm test:e2e` (after `pnpm exec playwright install chromium`).
 
+The localized home pages (`/fr/` and `/en/`) introduce Handbook and list every published catalog by topic. The former `/fr/library/` and `/en/library/` URLs redirect to the corresponding home page. The guide index remains at `/fr/guides/` and `/en/guides/`.
+
 ## Site theme
 
-`src/handbook.css` defines the shared palette, typography, and responsive layouts. The light and dark palettes follow the system color preference and use local system fonts.
+`src/handbook.css` defines the shared navigation, typography, and theme. The homepage, catalog pages, and guide index share an illustrated dark layout. Guide articles use `src/guide-page.css` and follow the system color preference until a reader chooses light or dark mode.
+
+Guide index filters for topics and difficulty can be shared in the URL.
 
 ## Edit a guide
 
 - Keep French and English bodies in sibling `<guide-id>.fr.md` and `<guide-id>.en.md` files.
 - Edit localized titles and descriptions and shared publication metadata in the catalog’s `catalog.json`. `content/library.json` sets category and catalog order; the `guides` array in each catalog sets guide order.
 - Keep unfinished guides marked `draft`. Set the shared status to `published` once both translations and `publishedAt` are ready. A publication date is displayed, not scheduled. Drafts are not included in the site.
+- Add a bullet list immediately after an `À retenir` / `Key takeaways` heading to surface it in the reading sidebar. Place `<!-- guide-steps -->` on a separate line before an ordered list to display it as step cards.
 
 ## Publish
 

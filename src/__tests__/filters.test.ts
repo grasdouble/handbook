@@ -35,26 +35,17 @@ const category: Category = {
 
 describe('public guide filters', () => {
   it('intersects tags, unions levels and keeps editorial order', () => {
-    const result = filterGuides([category], 'fr', {
-      q: '  PROMPT ',
+    const result = filterGuides([category], {
       tags: ['prompt', 'llm'],
       difficulty: ['beginner', 'intermediate'],
     });
     expect(result.map(({ guide }) => guide.id)).toEqual(['first', 'third']);
   });
 
-  it('matches only the title of the active translation', () => {
-    expect(filterGuides([category], 'en', { q: 'prompt', tags: [], difficulty: [] })).toEqual([]);
-    expect(filterGuides([category], 'en', { q: 'explanation', tags: [], difficulty: [] })).toEqual(
-      [],
-    );
-  });
-
   it('handles foreign and repeated values from a shared URL', () => {
     expect(
-      normalizeFilters({ q: 12, tags: ['llm', 3, 'llm'], difficulty: ['beginner', 'expert'] }),
+      normalizeFilters({ tags: ['llm', 3, 'llm'], difficulty: ['beginner', 'expert'] }),
     ).toEqual({
-      q: '',
       tags: ['llm'],
       difficulty: ['beginner'],
     });

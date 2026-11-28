@@ -1,7 +1,11 @@
-import { Badge, Container, Input, Text } from '@grasdouble/lufa_design-system';
-import { Link } from '@tanstack/react-router';
-import type { Category, Filters, Language } from '../library';
-import { filterGuides } from '../library';
+import { useMemo } from 'react';
+import { difficulties, filterGuides, type Filters } from '../filters';
+import type { Category, Language } from '../library';
+import { CatalogHero } from './CatalogHero';
+import { GuideCard, guideDifficultyLabels } from './GuideCard';
+import { HandbookIcon } from './HandbookIcon';
+import '../catalog-library.css';
+import '../guides-index.css';
 
 export interface GuidesIndexProps {
   language: Language;
@@ -10,27 +14,28 @@ export interface GuidesIndexProps {
   onFiltersChange: (filters: Filters) => void;
 }
 
-const difficulties = ['beginner', 'intermediate', 'advanced'] as const;
-
-const difficultyLabels: Record<Language, Record<(typeof difficulties)[number], string>> = {
-  fr: { beginner: 'Débutant', intermediate: 'Intermédiaire', advanced: 'Avancé' },
-  en: { beginner: 'Beginner', intermediate: 'Intermediate', advanced: 'Advanced' },
-};
-
 export function GuidesIndex({ language, categories, filters, onFiltersChange }: GuidesIndexProps) {
-  const results = filterGuides(categories, language, filters);
-  const allTags = [
-    ...new Set(
-      categories.flatMap((category) =>
-        category.catalogs.flatMap((catalog) => catalog.guides.flatMap((guide) => guide.tags)),
-      ),
-    ),
-  ].sort((a, b) => a.localeCompare(b, language));
+  const results = filterGuides(categories, filters);
+  const allTags = useMemo(
+    () =>
+      [
+        ...new Set(
+          categories.flatMap((category) =>
+            category.catalogs.flatMap((catalog) => catalog.guides.flatMap((guide) => guide.tags)),
+          ),
+        ),
+      ].sort((a, b) => a.localeCompare(b, language)),
+    [categories, language],
+  );
   const strings =
     language === 'fr'
       ? {
           title: 'Tous les guides',
-          search: 'Rechercher un guide',
+          description:
+            'Des guides pratiques sur l’IA, l’architecture logicielle et les outils de développement.',
+          filters: 'Filtres',
+          matches: 'Guides trouvés',
+          result: 'résultat',
           tags: 'Thèmes',
           difficulty: 'Niveau',
           results: 'résultats',
@@ -39,7 +44,10 @@ export function GuidesIndex({ language, categories, filters, onFiltersChange }: 
         }
       : {
           title: 'All guides',
-          search: 'Search guides',
+          description: 'Practical guides on AI, software architecture, and developer tools.',
+          filters: 'Filters',
+          matches: 'Matching guides',
+          result: 'result',
           tags: 'Topics',
           difficulty: 'Difficulty',
           results: 'results',
@@ -59,41 +67,18 @@ export function GuidesIndex({ language, categories, filters, onFiltersChange }: 
   };
 
   return (
-    <Container size="xl" className="library-page">
-      <header className="page-intro">
-        <Text as="h1" variant="h1">
-          {strings.title}
-        </Text>
-      </header>
+    <div className="catalog-library guide-index">
+      <CatalogHero
+        label="GrasDouble Handbook"
+        title={strings.title}
+        description={strings.description}
+      />
       <div className="guides-layout">
-        <form
-          className="guide-filters"
-          onSubmit={(event) => event.preventDefault()}
-          aria-label={strings.title}
-        >
-          <label className="filter-search-label" htmlFor="guide-search">
-            {strings.search}
-          </label>
-          <Input
-            id="guide-search"
-            type="search"
-            value={filters.q}
-            fullWidth
-            onChange={(event) => onFiltersChange({ ...filters, q: event.currentTarget.value })}
-          />
-          <fieldset className="filter-group">
-            <legend>{strings.tags}</legend>
-            {allTags.map((tag) => (
-              <label className="filter-option" key={tag}>
-                <input
-                  type="checkbox"
-                  checked={filters.tags.includes(tag)}
-                  onChange={(event) => changeTag(tag, event.currentTarget.checked)}
-                />
-                <span>{tag}</span>
-              </label>
-            ))}
-          </fieldset>
+        <aside className="guide-filters" aria-labelledby="guide-filters-title">
+          <h2 className="guide-results-title" id="guide-filters-title">
+            <HandbookIcon name="filter" />
+            {strings.filters}
+          </h2>
           <fieldset className="filter-group">
             <legend>{strings.difficulty}</legend>
             {difficulties.map((difficulty) => (
@@ -103,59 +88,72 @@ export function GuidesIndex({ language, categories, filters, onFiltersChange }: 
                   checked={filters.difficulty.includes(difficulty)}
                   onChange={(event) => changeDifficulty(difficulty, event.currentTarget.checked)}
                 />
-                <span>{difficultyLabels[language][difficulty]}</span>
+                <span>{guideDifficultyLabels[language][difficulty]}</span>
               </label>
             ))}
           </fieldset>
-          {(filters.q !== '' || filters.tags.length > 0 || filters.difficulty.length > 0) && (
+          {allTags.length > 0 && (
+            <details className="filter-topics">
+              <summary>
+                {strings.tags}
+                {filters.tags.length > 0 && ` (${filters.tags.length})`}
+              </summary>
+              <fieldset className="filter-group" aria-label={strings.tags}>
+                {allTags.map((tag) => (
+                  <label className="filter-option" key={tag}>
+                    <input
+                      type="checkbox"
+                      checked={filters.tags.includes(tag)}
+                      onChange={(event) => changeTag(tag, event.currentTarget.checked)}
+                    />
+                    <span>{tag}</span>
+                  </label>
+                ))}
+              </fieldset>
+            </details>
+          )}
+          {(filters.tags.length > 0 || filters.difficulty.length > 0) && (
             <button
-              className="text-button"
+              className="guide-filter-reset"
               type="button"
-              onClick={() => onFiltersChange({ q: '', tags: [], difficulty: [] })}
+              onClick={() => onFiltersChange({ tags: [], difficulty: [] })}
             >
               {strings.clear}
             </button>
           )}
-        </form>
-        <section className="guide-results" aria-live="polite" aria-label={strings.title}>
-          <p className="result-count">
-            {results.length} {strings.results}
-          </p>
+        </aside>
+        <section className="guide-results" aria-label={strings.title}>
+          <header className="guide-results-header">
+            <h2 className="guide-results-title">
+              <HandbookIcon name="book" />
+              {strings.matches}
+            </h2>
+            <p className="result-count" role="status">
+              {results.length} {results.length === 1 ? strings.result : strings.results}
+            </p>
+          </header>
           {results.length === 0 ? (
             <p className="empty-state">{strings.empty}</p>
           ) : (
             <div className="guide-card-grid">
               {results.map(({ category, catalog, guide }) => (
-                <article className="guide-card" key={`${catalog.id}/${guide.id}`}>
-                  <Link
-                    to="/$lang/$catalogId/$guideId/"
-                    params={{ lang: language, catalogId: catalog.id, guideId: guide.id }}
-                    className="guide-card-link"
-                  >
-                    <span className="eyebrow">
+                <GuideCard
+                  key={`${catalog.id}/${guide.id}`}
+                  guide={guide}
+                  catalogId={catalog.id}
+                  language={language}
+                  context={
+                    <>
+                      <HandbookIcon name="book" />
                       {category.title[language]} · {catalog.title[language]}
-                    </span>
-                    <Text as="h2" variant="h3">
-                      {guide.title[language]}
-                    </Text>
-                    <Text as="p" variant="body" color="secondary">
-                      {guide.description[language]}
-                    </Text>
-                  </Link>
-                  <div className="guide-card-meta">
-                    <Badge variant="default">{difficultyLabels[language][guide.difficulty]}</Badge>
-                    {guide.tags.map((tag) => (
-                      <span className="tag" key={tag}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </article>
+                    </>
+                  }
+                />
               ))}
             </div>
           )}
         </section>
       </div>
-    </Container>
+    </div>
   );
 }

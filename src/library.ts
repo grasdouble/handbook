@@ -1,9 +1,6 @@
 import { notFound } from '@tanstack/react-router';
 import publishedLibrary from './generated/library.json';
 
-export { filterGuides } from './filters';
-export type { Filters } from './filters';
-
 export type Language = 'fr' | 'en';
 export type Difficulty = 'beginner' | 'intermediate' | 'advanced';
 type LocalizedText = Record<Language, string>;

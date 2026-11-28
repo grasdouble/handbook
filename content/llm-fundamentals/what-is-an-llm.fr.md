@@ -1,3 +1,24 @@
+### Définition
+
+Un **grand modèle de langage** (LLM, pour *Large Language Model*) est un modèle d’IA qui traite et génère du texte à partir d’un contexte.
+
+> **En résumé**  
+> Un LLM apprend des régularités du langage en prédisant le prochain token. Il utilise ensuite ces régularités pour produire une suite plausible, pas pour vérifier les faits.
+
+### Comment ça fonctionne ?
+
+Pour un LLM qui génère du texte, l’apprentissage et la génération se déroulent en quatre étapes :
+
+<!-- guide-steps -->
+
+1. **Données**  
+   Des textes sont découpés en tokens.
+2. **Entraînement**  
+   Le modèle apprend à prédire le token suivant.
+3. **Prédiction**  
+   À partir du contexte, le modèle estime des probabilités et choisit un token.
+4. **Génération**  
+   Le token enrichit le contexte, puis le modèle répète la prédiction.
 
 Vous ouvrez un chatbot parce que la page blanche est en train de gagner. Il vous rend un email correct en dix secondes, puis arrive la partie agaçante : tout le monde appelle cette magie « un LLM » et passe à autre chose. Si cet acronyme vous semble flou, tant mieux. Il cache souvent la seule idée qui compte vraiment.
 
@@ -20,3 +41,9 @@ L'architecture Transformer compte parce qu'elle aide le modèle à utiliser le c
 ### La règle que j'utiliserais
 
 Si votre tâche consiste surtout à façonner du langage, commencez par un LLM. Si elle repose surtout sur des faits vérifiés, des événements récents ou des décisions à fort enjeu, traitez le LLM comme un premier brouillon et allez chercher une source fiable avant d'y croire. La raison est simple : le modèle est entraîné à produire une suite plausible, pas à vérifier des faits. Le guide suivant sur la génération token par token détaille ce mécanisme et explique pourquoi ces systèmes cessent d'avoir l'air mystiques une fois qu'on l'a vu.
+
+### À retenir
+
+- Un LLM traite et génère du texte en s’appuyant sur le contexte.
+- L’entraînement sur de grands corpus lui apprend à prédire le prochain token.
+- La plupart des LLM modernes reposent sur l’architecture Transformer.

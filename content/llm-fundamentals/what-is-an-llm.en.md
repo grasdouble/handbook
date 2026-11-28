@@ -1,3 +1,24 @@
+### Definition
+
+A **large language model** (LLM) is an AI model that processes and generates text using context.
+
+> **In short**  
+> An LLM learns language patterns by predicting the next token. It uses those patterns to produce a plausible continuation, not to verify facts.
+
+### How does it work?
+
+For a text-generating LLM, training and generation break down into four steps:
+
+<!-- guide-steps -->
+
+1. **Data**  
+   Text is broken into tokens.
+2. **Training**  
+   The model learns to predict the next token.
+3. **Prediction**  
+   Using the context, the model estimates probabilities and selects a token.
+4. **Generation**  
+   The token extends the context, then the model repeats prediction.
 
 You open a chatbot because the blank page is winning. It gives you a polished email in ten seconds, and then you hit the annoying part: everyone calls this magic "an LLM" and moves on. If that acronym feels vague, good. It usually hides the one idea that actually matters.
 
@@ -20,3 +41,9 @@ The Transformer architecture matters because it helps the model use context inst
 ### The rule I would use
 
 If your task is mostly about shaping language, start with an LLM. If your task is mostly about verified facts, recent events, or high-stakes decisions, treat the LLM as a first draft and bring in a trusted source before you believe it. The reason is simple: the model is trained to produce a plausible continuation, not to verify facts. The next guide on token-by-token generation explains that mechanism and shows why these systems stop feeling mystical once you have seen it.
+
+### Key takeaways
+
+- An LLM uses context to process and generate text.
+- Training on large datasets teaches it to predict the next token.
+- Most modern LLMs are based on the Transformer architecture.

@@ -1,0 +1,119 @@
+.guide-index .catalog-hero {
+  min-height: 16rem;
+  padding-block: clamp(1.75rem, 3.75vw, 3.75rem);
+}
+
+.guide-index .catalog-hero-description {
+  max-width: 46ch;
+  margin-block-end: 0;
+}
+
+.guides-layout {
+  display: grid;
+  grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(1rem, 2.5vw, 2rem);
+  max-width: 96rem;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 2.8vw, 2.7rem);
+}
+
+.guide-filters {
+  position: sticky;
+  top: var(--handbook-header-offset);
+  display: grid;
+  gap: 1rem;
+  max-height: calc(100dvh - var(--handbook-header-offset) - 1rem);
+  overflow: auto;
+  padding: 1.15rem;
+  border: 1px solid var(--library-border);
+  border-radius: 0.8rem;
+  background: #191d36;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.filter-group legend,
+.filter-topics summary {
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.filter-group legend,
+.filter-topics[open] summary {
+  margin-bottom: 0.55rem;
+}
+
+.filter-topics {
+  padding-block-start: 0.8rem;
+  border-block-start: 1px solid var(--library-border);
+}
+
+.filter-topics summary {
+  cursor: pointer;
+}
+
+.filter-topics summary:focus-visible {
+  outline: 3px solid var(--handbook-accent);
+  outline-offset: 3px;
+}
+
+.filter-option {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.48rem;
+  border: 1px solid var(--library-border);
+  border-radius: 0.45rem;
+  color: var(--handbook-muted);
+  font-size: 0.8rem;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+.filter-option:hover,
+.filter-option:has(:checked) {
+  border-color: var(--library-accent);
+  background: #34305c;
+  color: #f8f8ff;
+}
+
+.filter-option input {
+  flex: none;
+  margin: 0;
+  accent-color: var(--library-accent);
+}
+
+.guide-filter-reset {
+  justify-self: start;
+  padding: 0.25rem 0;
+  border: 0;
+  background: none;
+  color: var(--library-cyan);
+  font: inherit;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+
+@media (width <= 48rem) {
+  .guides-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .guide-filters {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}
