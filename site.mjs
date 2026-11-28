@@ -1,15 +1,29 @@
 export const origin = 'https://handbook.grasdouble.fr';
-export const languages = ['fr', 'en'];
+const languages = ['fr', 'en'];
+
+/** @param {'fr' | 'en'} language */
+export function languageSegment(language) {
+  return language === 'en' ? 'en' : undefined;
+}
+
+/** @param {'fr' | 'en'} language */
+export function localizedBase(language) {
+  const segment = languageSegment(language);
+  return segment ? `/${segment}/` : '/';
+}
 
 export function publicPaths(library) {
-  return languages.flatMap((lang) => [
-    `/${lang}/`,
-    `/${lang}/guides/`,
-    ...library.categories.flatMap(({ catalogs }) =>
-      catalogs.flatMap(({ id, guides }) => [
-        `/${lang}/${id}/`,
-        ...guides.map((guide) => `/${lang}/${id}/${guide.id}/`),
-      ]),
-    ),
-  ]);
+  return languages.flatMap((language) => {
+    const base = localizedBase(language);
+    return [
+      base,
+      `${base}guides/`,
+      ...library.categories.flatMap(({ catalogs }) =>
+        catalogs.flatMap(({ id, guides }) => [
+          `${base}${id}/`,
+          ...guides.map((guide) => `${base}${id}/${guide.id}/`),
+        ]),
+      ),
+    ];
+  });
 }

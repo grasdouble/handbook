@@ -16,7 +16,7 @@ test('serves both translations directly without JavaScript', async ({ browser, b
       ['fr', titleFr],
       ['en', titleEn],
     ]) {
-      const response = await page.goto('/' + locale + path);
+      const response = await page.goto((locale === 'en' ? '/en' : '') + path);
       expect(response?.status()).toBe(200);
       await expect(page.getByRole('heading', { level: 1, name: title })).toBeVisible();
       await expect(page.getByRole('link', { name: 'Handbook', exact: true })).toBeVisible();
@@ -25,10 +25,13 @@ test('serves both translations directly without JavaScript', async ({ browser, b
     }
     await page.goto('/');
     await expect(
-      page.getByRole('heading', { level: 1, name: 'Handbook', exact: true }),
+      page.getByRole('heading', { level: 1, name: 'Comprendre. Concevoir. Construire.' }),
     ).toBeVisible();
     await expect(page.getByRole('link', { name: 'English' })).toHaveAttribute('href', '/en/');
-    await expect(page.getByRole('link', { name: 'Français' })).toHaveAttribute('href', '/fr/');
+    await page.getByRole('link', { name: 'English' }).click();
+    await expect(page).toHaveURL('/en/');
+    await expect(page.getByRole('link', { name: 'Français' })).toHaveAttribute('href', '/');
+    expect((await page.goto('/fr' + path))?.status()).toBe(404);
   } finally {
     await page.close();
   }
@@ -36,12 +39,12 @@ test('serves both translations directly without JavaScript', async ({ browser, b
 
 test('browses catalogs from the unified bilingual home page', async ({ page }) => {
   await page.setViewportSize({ width: 1536, height: 1300 });
-  await page.goto('/fr/');
+  await page.goto('/');
   await expect(
     page.getByRole('heading', { level: 1, name: 'Comprendre. Concevoir. Construire.' }),
   ).toBeVisible();
   await page.getByRole('link', { name: 'Explorer les catalogues' }).click();
-  await expect(page).toHaveURL('/fr/#catalogs');
+  await expect(page).toHaveURL('/#catalogs');
   const catalogHeading = page.getByRole('heading', { name: 'IA & LLM' });
   await expect
     .poll(() =>
@@ -54,15 +57,15 @@ test('browses catalogs from the unified bilingual home page', async ({ page }) =
     .toBeLessThan(32);
   await expect(page.getByRole('link', { name: /Fondamentaux des LLMs/ })).toHaveAttribute(
     'href',
-    '/fr/llm-fundamentals/',
+    '/llm-fundamentals/',
   );
   await expect(page.getByRole('link', { name: /Tooling moderne/ })).toHaveAttribute(
     'href',
-    '/fr/tooling-essentials/',
+    '/tooling-essentials/',
   );
   await expect(page.getByRole('link', { name: /Architecture front-end/ })).toHaveAttribute(
     'href',
-    '/fr/frontend-architecture/',
+    '/frontend-architecture/',
   );
 
   await page.getByRole('link', { name: 'English', exact: true }).click();
@@ -100,24 +103,20 @@ test('links from a guide breadcrumb to its category on the home page', async ({ 
   await expect(page.getByRole('heading', { name: 'AI & LLM' })).toBeInViewport();
 });
 
-test('redirects the French library and opens the guide index without JavaScript on mobile', async ({
-  browser,
-  baseURL,
-}) => {
+test('opens the French guide index without JavaScript on mobile', async ({ browser, baseURL }) => {
   const page = await browser.newPage({
     baseURL,
     javaScriptEnabled: false,
     viewport: { width: 320, height: 800 },
   });
   try {
-    await page.goto('/fr/library/');
-    await expect(page).toHaveURL('/fr/');
+    await page.goto('/');
     await expect(
       page.getByRole('heading', { level: 1, name: 'Comprendre. Concevoir. Construire.' }),
     ).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(320);
     await page.getByRole('link', { name: 'Guides', exact: true }).click();
-    await expect(page).toHaveURL('/fr/guides/');
+    await expect(page).toHaveURL('/guides/');
     await expect(page.getByRole('heading', { name: 'Tous les guides' })).toBeVisible();
     await expect(page.getByRole('link', { name: titleFr })).toBeVisible();
   } finally {
@@ -157,7 +156,7 @@ test('restores the filtered index and opens translations without a document relo
   await page.getByRole('navigation', { name: 'Language' }).locator('summary').click();
   await page.getByRole('link', { name: 'Français' }).click();
   await expect(page.getByRole('heading', { level: 1, name: titleFr })).toBeVisible();
-  await expect(page).toHaveURL('/fr' + path);
+  await expect(page).toHaveURL(path);
   expect(await documentStart(page)).toBe(start);
 
   await page.goBack();
@@ -168,16 +167,12 @@ test('restores the filtered index and opens translations without a document relo
   await expect(page.getByRole('link', { name: titleEn })).toBeVisible();
   await page.getByText('Topics (1)', { exact: true }).click();
   await expect(page.getByRole('checkbox', { name: 'prompting', exact: true })).toBeChecked();
-
-  await page.goto('/');
-  await expect(page).toHaveURL('/fr/');
 });
 
-test('reloading a deep link keeps the language from the URL', async ({ page }) => {
-  await page.goto('/');
-  await expect(page).toHaveURL('/en/');
-  await page.goto('/fr' + path);
+test('reloading a French deep link keeps its unprefixed URL', async ({ page }) => {
+  await page.goto(path);
   expect((await page.reload())?.status()).toBe(200);
+  await expect(page).toHaveURL(path);
   await expect(page.getByRole('heading', { level: 1, name: titleFr })).toBeVisible();
 });
 
@@ -213,7 +208,7 @@ test('keeps the guide readable on a narrow dark display', async ({ page }) => {
 });
 
 test('shows the published guide outline and follows a related page', async ({ page }) => {
-  await page.goto('/fr/llm-fundamentals/what-is-an-llm/');
+  await page.goto('/llm-fundamentals/what-is-an-llm/');
   const catalog = page.getByRole('navigation', { name: 'IA & LLM' });
   await expect(catalog.getByRole('link', { name: "Qu'est-ce qu'un LLM ?" })).toHaveAttribute(
     'aria-current',
@@ -235,15 +230,16 @@ test('shows the published guide outline and follows a related page', async ({ pa
   await expect(page.getByRole('heading', { level: 1, name: 'Tokens' })).toBeVisible();
 });
 
-test('persists the chosen reading theme over the system preference', async ({ page }) => {
-  await page.emulateMedia({ colorScheme: 'light' });
-  await page.goto('/en' + path);
-  await page.getByRole('button', { name: 'Dark mode' }).click();
-  await expect(page.locator('html')).toHaveCSS('color-scheme', 'dark');
-  await page.reload();
-  await expect(page.getByRole('button', { name: 'Dark mode' })).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
-  await expect(page.locator('html')).toHaveCSS('color-scheme', 'dark');
+test('uses the dark theme without JavaScript even on a light system', async ({
+  browser,
+  baseURL,
+}) => {
+  const page = await browser.newPage({ baseURL, javaScriptEnabled: false, colorScheme: 'light' });
+  try {
+    await page.goto('/en' + path);
+    await expect(page.locator('html')).toHaveCSS('color-scheme', 'dark');
+    await expect(page.getByRole('heading', { level: 1, name: titleEn })).toBeVisible();
+  } finally {
+    await page.close();
+  }
 });

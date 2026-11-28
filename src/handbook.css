@@ -1,18 +1,18 @@
 :root[data-theme='handbook'] {
-  color-scheme: light dark;
+  color-scheme: dark;
   --handbook-content-width: 74rem;
   --handbook-header-offset: 5.25rem;
   --handbook-space: clamp(1rem, 3vw, 2rem);
-  --handbook-page: light-dark(#f8f7f4, #101429);
-  --handbook-surface: light-dark(#fffefa, #191d36);
-  --handbook-inset: light-dark(#eeecf8, #222644);
-  --handbook-text: light-dark(#242338, #f3f2fc);
-  --handbook-muted: light-dark(#555369, #c3c6df);
-  --handbook-border: light-dark(#dbd8e7, #383d60);
-  --handbook-control-border: light-dark(#828096, #7c82a6);
-  --handbook-accent: light-dark(#5635a8, #c0afff);
-  --handbook-accent-soft: light-dark(#efe9fb, #2a2b54);
-  --handbook-diagram-surface: light-dark(#fffefa, #e7eaf0);
+  --handbook-page: #101429;
+  --handbook-surface: #191d36;
+  --handbook-inset: #222644;
+  --handbook-text: #f3f2fc;
+  --handbook-muted: #c3c6df;
+  --handbook-border: #383d60;
+  --handbook-control-border: #7c82a6;
+  --handbook-accent: #c0afff;
+  --handbook-accent-soft: #2a2b54;
+  --handbook-diagram-surface: #e7eaf0;
 
   --lufa-semantic-ui-background-page: var(--handbook-page);
   --lufa-semantic-ui-background-surface-default: var(--handbook-surface);
@@ -26,14 +26,6 @@
   --lufa-component-input-border-hover: var(--handbook-accent);
   --lufa-component-input-border-focus: var(--handbook-accent);
   --lufa-component-input-text-default: var(--handbook-text);
-}
-
-:root[data-theme='handbook'][data-mode='light'] {
-  color-scheme: light;
-}
-
-:root[data-theme='handbook'][data-mode='dark'] {
-  color-scheme: dark;
 }
 
 * {
@@ -154,12 +146,6 @@ input:focus-visible {
   width: 1.2rem;
   height: 1.2rem;
 }
-.site-header-controls {
-  display: flex;
-  justify-self: end;
-  align-items: center;
-  gap: 0.75rem;
-}
 .site-main {
   display: flow-root;
   min-height: calc(100vh - 3.8rem);
@@ -278,7 +264,7 @@ input:focus-visible {
   border-radius: 0.75rem;
   background:
     linear-gradient(var(--guide-panel), var(--guide-panel)) padding-box,
-    linear-gradient(110deg, light-dark(#1c7190, #86ccd9), var(--guide-highlight)) border-box;
+    linear-gradient(110deg, #86ccd9, var(--guide-highlight)) border-box;
   color: var(--handbook-text);
 }
 .markdown-content blockquote p {

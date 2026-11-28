@@ -14,7 +14,7 @@ const copy = {
   },
 };
 
-export const Route = createFileRoute('/$lang/')({
+export const Route = createFileRoute('/{-$lang}/')({
   head: ({
     match: {
       context: { language },

@@ -7,11 +7,10 @@ import {
   createRootRoute,
   useLocation,
 } from '@tanstack/react-router';
+import { languageSegment } from '../../site.mjs';
 import { HandbookIcon } from '../components/HandbookIcon';
-import { ReadingTheme } from '../components/ReadingTheme';
 import { normalizeFilters } from '../filters';
 import type { Language } from '../library';
-import { isLanguage, saveLanguagePreference } from '../locale';
 import '@grasdouble/lufa_design-system-tokens/tokens.css';
 import '@grasdouble/lufa_design-system/style.css';
 import '../handbook.css';
@@ -24,7 +23,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'color-scheme', content: 'light dark' },
+      { name: 'color-scheme', content: 'dark' },
       { title: 'Handbook' },
     ],
     links: [{ rel: 'icon', type: 'image/svg+xml', href: '/handbook-mark.svg' }],
@@ -52,16 +51,18 @@ const shellLabels = {
 };
 
 function Document({ children }: { children: ReactNode }) {
-  const [, segment, catalogId, guideId] = useLocation({
+  const [, first, second, third] = useLocation({
     select: ({ pathname }) => pathname.split('/'),
   });
-  const language = isLanguage(segment) ? segment : 'fr';
+  const language = first === 'en' ? 'en' : 'fr';
+  const lang = languageSegment(language);
+  const catalogId = lang ? second : first;
+  const guideId = lang ? third : second;
   const labels = shellLabels[language];
-  const isGuide = isLanguage(segment) && Boolean(catalogId && guideId);
+  const isGuide = Boolean(catalogId && guideId);
   return (
-    <html lang={language} data-theme="handbook" suppressHydrationWarning>
+    <html lang={language} data-theme="handbook" data-mode="dark">
       <head>
-        <script src="/color-mode.js"></script>
         <HeadContent />
       </head>
       <body>
@@ -70,52 +71,45 @@ function Document({ children }: { children: ReactNode }) {
         </a>
         <header className={isGuide ? 'site-header site-header-guide' : 'site-header'}>
           <div className="site-header-inner">
-            <Link className="site-brand" to="/$lang/" params={{ lang: language }}>
+            <Link className="site-brand" to="/{-$lang}/" params={{ lang }}>
               <img src="/handbook-mark.svg" width="40" height="32" alt="" />
               <span>GrasDouble</span>
               <span className="site-brand-product">Handbook</span>
             </Link>
-            {isLanguage(segment) && (
-              <>
-                <nav className="site-nav" aria-label={labels.navigation}>
-                  <Link to="/$lang/" params={{ lang: language }} activeOptions={{ exact: true }}>
-                    Handbook
-                  </Link>
-                  <Link
-                    to="/$lang/guides/"
-                    params={{ lang: language }}
-                    search={emptyFilters}
-                    data-section-active={isGuide || undefined}
-                  >
-                    {labels.guides}
-                  </Link>
-                </nav>
-                <div className="site-header-controls">
-                  {isGuide && <ReadingTheme language={language} />}
-                  <nav className="site-language" aria-label={labels.languages}>
-                    {isGuide ? (
-                      <details key={language} className="guide-language-menu">
-                        <summary aria-label={labels.languages}>
-                          {language.toUpperCase()}
-                          <HandbookIcon name="down" />
-                        </summary>
-                        <TranslationLink
-                          activeLanguage={language}
-                          catalogId={catalogId}
-                          guideId={guideId}
-                        />
-                      </details>
-                    ) : (
-                      <TranslationLink
-                        activeLanguage={language}
-                        catalogId={catalogId}
-                        guideId={guideId}
-                      />
-                    )}
-                  </nav>
-                </div>
-              </>
-            )}
+            <nav className="site-nav" aria-label={labels.navigation}>
+              <Link to="/{-$lang}/" params={{ lang }} activeOptions={{ exact: true }}>
+                Handbook
+              </Link>
+              <Link
+                to="/{-$lang}/guides/"
+                params={{ lang }}
+                search={emptyFilters}
+                data-section-active={isGuide || undefined}
+              >
+                {labels.guides}
+              </Link>
+            </nav>
+            <nav className="site-language" aria-label={labels.languages}>
+              {isGuide ? (
+                <details key={language} className="guide-language-menu">
+                  <summary aria-label={labels.languages}>
+                    {language.toUpperCase()}
+                    <HandbookIcon name="down" />
+                  </summary>
+                  <TranslationLink
+                    activeLanguage={language}
+                    catalogId={catalogId}
+                    guideId={guideId}
+                  />
+                </details>
+              ) : (
+                <TranslationLink
+                  activeLanguage={language}
+                  catalogId={catalogId}
+                  guideId={guideId}
+                />
+              )}
+            </nav>
           </div>
         </header>
         <main className="site-main" id="main-content" tabIndex={-1}>
@@ -136,38 +130,39 @@ function TranslationLink({
   catalogId?: string;
   guideId?: string;
 }) {
-  const lang = activeLanguage === 'fr' ? 'en' : 'fr';
+  const language = activeLanguage === 'fr' ? 'en' : 'fr';
+  const lang = languageSegment(language);
   const props = {
-    lang,
-    hrefLang: lang,
-    onClick: () => saveLanguagePreference(lang),
+    lang: language,
+    hrefLang: language,
     children: (
       <>
         <HandbookIcon name="globe" />
-        {lang === 'en' ? 'English' : 'Français'}
+        {language === 'en' ? 'English' : 'Français'}
       </>
     ),
   };
   if (catalogId && guideId) {
     return (
-      <Link {...props} to="/$lang/$catalogId/$guideId/" params={{ lang, catalogId, guideId }} />
+      <Link {...props} to="/{-$lang}/$catalogId/$guideId/" params={{ lang, catalogId, guideId }} />
     );
   }
   if (catalogId === 'guides') {
-    return <Link {...props} to="/$lang/guides/" params={{ lang }} search={normalizeFilters} />;
+    return <Link {...props} to="/{-$lang}/guides/" params={{ lang }} search={normalizeFilters} />;
   }
-  if (catalogId) return <Link {...props} to="/$lang/$catalogId/" params={{ lang, catalogId }} />;
-  return <Link {...props} to="/$lang/" params={{ lang }} />;
+  if (catalogId) return <Link {...props} to="/{-$lang}/$catalogId/" params={{ lang, catalogId }} />;
+  return <Link {...props} to="/{-$lang}/" params={{ lang }} />;
 }
 
 function NotFound() {
-  const segment = useLocation({ select: ({ pathname }) => pathname.split('/')[1] });
-  const lang = isLanguage(segment) ? segment : 'fr';
+  const language = useLocation({
+    select: ({ pathname }) => (pathname.split('/')[1] === 'en' ? 'en' : 'fr'),
+  });
   return (
     <div className="library-page">
-      <h1>{lang === 'fr' ? 'Page introuvable' : 'Page not found'}</h1>
-      <Link to="/$lang/" params={{ lang }} hash="catalogs">
-        {shellLabels[lang].library}
+      <h1>{language === 'fr' ? 'Page introuvable' : 'Page not found'}</h1>
+      <Link to="/{-$lang}/" params={{ lang: languageSegment(language) }} hash="catalogs">
+        {shellLabels[language].library}
       </Link>
     </div>
   );

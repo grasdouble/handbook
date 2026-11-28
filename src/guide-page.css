@@ -1,7 +1,3 @@
-.site-header-guide {
-  color-scheme: dark;
-}
-
 .site-header-guide .site-header-inner {
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   gap: 1.35rem;
@@ -12,7 +8,6 @@
   font-weight: 700;
 }
 
-.reading-theme,
 .guide-language-menu summary {
   display: flex;
   align-items: center;
@@ -20,32 +15,8 @@
   border-radius: 2rem;
 }
 
-.reading-theme[hidden] {
-  display: none;
-}
-
-.reading-theme button {
-  display: grid;
-  place-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-}
-
-.reading-theme button[aria-pressed='true'],
-.reading-theme button:hover,
 .guide-language-menu summary:hover {
   background: #27284d;
-}
-
-.reading-theme svg {
-  width: 1.15rem;
-  height: 1.15rem;
 }
 
 .guide-language-menu {
@@ -101,7 +72,7 @@
     grid-column: auto;
   }
 
-  .site-header-guide .site-header-controls {
+  .site-header-guide .site-language {
     grid-area: 1 / 2;
   }
 
@@ -118,16 +89,12 @@
   .site-header-guide .site-brand-product {
     display: none;
   }
-
-  .site-header-guide .site-header-controls {
-    gap: 0.35rem;
-  }
 }
 
 .guide-reading-layout {
-  --guide-highlight: light-dark(#6541b6, #b295ff);
-  --guide-panel: light-dark(#f4f0ff, #191d38);
-  --guide-canvas: light-dark(#fdfcff, #101629);
+  --guide-highlight: #b295ff;
+  --guide-panel: #191d38;
+  --guide-canvas: #101629;
   display: grid;
   grid-template-columns: minmax(0, 51.25rem);
   justify-content: center;
@@ -135,8 +102,7 @@
   gap: 1.5rem;
   min-height: calc(100vh - 3.8rem);
   background:
-    radial-gradient(ellipse at bottom right, light-dark(#f2eafd, #211841), transparent 35rem),
-    var(--guide-canvas);
+    radial-gradient(ellipse at bottom right, #211841, transparent 35rem), var(--guide-canvas);
 }
 
 .guide-main {
@@ -193,8 +159,8 @@
   display: inline-flex;
   padding: 0.25rem 0.75rem;
   border-radius: 0.55rem;
-  background: light-dark(#eadcff, #3c2377);
-  color: light-dark(#4c2886, #edddff);
+  background: #3c2377;
+  color: #edddff;
   font-size: 0.8rem;
 }
 
@@ -274,7 +240,7 @@
 }
 
 .guide-rail {
-  background: light-dark(#f4f1fc, #12172b);
+  background: #12172b;
   order: 2;
 }
 

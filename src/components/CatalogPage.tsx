@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router';
+import { languageSegment } from '../../site.mjs';
 import type { Catalog, Language } from '../library';
 import { getCatalogArtwork } from './catalog-artwork';
 import { CatalogHero } from './CatalogHero';
@@ -41,7 +42,12 @@ export function CatalogPage({ language, catalog }: CatalogPageProps) {
         description={catalog.description[language]}
         artwork={getCatalogArtwork(catalog.id)}
       >
-        <Link className="catalog-back" to="/$lang/" params={{ lang: language }} hash="catalogs">
+        <Link
+          className="catalog-back"
+          to="/{-$lang}/"
+          params={{ lang: languageSegment(language) }}
+          hash="catalogs"
+        >
           <HandbookIcon name="arrow" />
           {strings.back}
         </Link>

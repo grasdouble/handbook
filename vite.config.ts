@@ -15,12 +15,9 @@ export default defineConfig(({ command }) => ({
       },
       pages:
         command === 'build'
-          ? [
-              { path: '/' },
-              ...publicPaths(JSON.parse(readFileSync('src/generated/library.json', 'utf8'))).map(
-                (path: string) => ({ path }),
-              ),
-            ]
+          ? publicPaths(JSON.parse(readFileSync('src/generated/library.json', 'utf8'))).map(
+              (path: string) => ({ path }),
+            )
           : [],
     }),
     react(),

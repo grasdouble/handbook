@@ -3,7 +3,8 @@ import { CatalogPage } from '../components';
 import { requireCatalog } from '../library';
 import { pageHead } from '../locale';
 
-export const Route = createFileRoute('/$lang/$catalogId')({
+export const Route = createFileRoute('/{-$lang}/$catalogId')({
+  params: { parse: ({ catalogId }) => (catalogId === 'en' ? false : { catalogId }) },
   loader: ({ params }) => requireCatalog(params.catalogId),
   head: ({
     loaderData: catalog,

@@ -3,7 +3,10 @@ import { GuidePage } from '../components';
 import { loadGuide } from '../library';
 import { pageHead } from '../locale';
 
-export const Route = createFileRoute('/$lang/$catalogId_/$guideId')({
+export const Route = createFileRoute('/{-$lang}/$catalogId_/$guideId')({
+  params: {
+    parse: ({ catalogId, guideId }) => (catalogId === 'en' ? false : { catalogId, guideId }),
+  },
   loader: ({ params, context: { language } }) =>
     loadGuide(language, params.catalogId, params.guideId),
   head: ({

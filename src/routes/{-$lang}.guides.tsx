@@ -4,7 +4,7 @@ import { normalizeFilters } from '../filters';
 import { categories } from '../library';
 import { pageHead } from '../locale';
 
-export const Route = createFileRoute('/$lang/guides')({
+export const Route = createFileRoute('/{-$lang}/guides')({
   validateSearch: normalizeFilters,
   search: { middlewares: [stripSearchParams({ tags: [], difficulty: [] })] },
   head: ({

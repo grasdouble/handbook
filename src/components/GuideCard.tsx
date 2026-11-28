@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import { Link } from '@tanstack/react-router';
+import { languageSegment } from '../../site.mjs';
 import type { Difficulty, Guide, Language } from '../library';
 
 export const guideDifficultyLabels: Record<Language, Record<Difficulty, string>> = {
@@ -20,8 +21,8 @@ export function GuideCard({
 }) {
   return (
     <Link
-      to="/$lang/$catalogId/$guideId/"
-      params={{ lang: language, catalogId, guideId: guide.id }}
+      to="/{-$lang}/$catalogId/$guideId/"
+      params={{ lang: languageSegment(language), catalogId, guideId: guide.id }}
       className="catalog-feature-card guide-card"
     >
       <div className="guide-card-context">{context}</div>

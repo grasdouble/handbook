@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router';
+import { languageSegment } from '../../site.mjs';
 import type { Catalog, Language } from '../library';
 import { getCatalogArtwork } from './catalog-artwork';
 import { HandbookIcon } from './HandbookIcon';
@@ -7,8 +8,8 @@ export function CatalogCard({ catalog, language }: { catalog: Catalog; language:
   const artwork = getCatalogArtwork(catalog.id);
   return (
     <Link
-      to="/$lang/$catalogId/"
-      params={{ lang: language, catalogId: catalog.id }}
+      to="/{-$lang}/$catalogId/"
+      params={{ lang: languageSegment(language), catalogId: catalog.id }}
       className="catalog-feature-card"
     >
       {artwork && (

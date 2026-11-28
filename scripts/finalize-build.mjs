@@ -1,9 +1,9 @@
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { languages, origin, publicPaths } from '../site.mjs';
+import { localizedBase, origin, publicPaths } from '../site.mjs';
 
 const library = JSON.parse(await readFile('src/generated/library.json', 'utf8'));
-const paths = ['/', ...publicPaths(library)];
+const paths = publicPaths(library);
 const output = 'dist/client';
 await Promise.all([
   ...paths.map((path) => access(join(output, path, 'index.html'))),
@@ -11,14 +11,14 @@ await Promise.all([
 ]);
 
 await Promise.all([
-  ...languages.map(async (lang) => {
-    const destination = `/${lang}/`;
-    const directory = join(output, lang, 'library');
+  (async () => {
+    const destination = localizedBase('en');
+    const directory = join(output, 'en', 'library');
     await mkdir(directory, { recursive: true });
     await writeFile(
       join(directory, 'index.html'),
       `<!doctype html>
-<html lang="${lang}">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Handbook</title>
@@ -30,7 +30,7 @@ await Promise.all([
 </html>
 `,
     );
-  }),
+  })(),
   writeFile(
     join(output, 'sitemap.xml'),
     '<?xml version="1.0" encoding="UTF-8"?>\n' +

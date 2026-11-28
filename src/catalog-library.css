@@ -4,7 +4,6 @@
   --library-cyan: #a0edf3;
   --handbook-accent: var(--library-cyan);
   --handbook-muted: #c9cbe6;
-  color-scheme: dark;
   color: #f8f8ff;
   background: #101429;
   background-image: radial-gradient(ellipse at 76% 3rem, #202554 0%, transparent 46rem);

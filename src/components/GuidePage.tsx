@@ -5,6 +5,7 @@ import { unified, type Plugin } from 'unified';
 import type { Heading, Parent, Root } from 'mdast';
 import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
+import { languageSegment } from '../../site.mjs';
 import { categories, type Catalog, type Guide, type Language } from '../library';
 import { HandbookIcon } from './HandbookIcon';
 
@@ -308,23 +309,24 @@ export function GuidePage({ language, catalog, guide, markdown }: GuidePageProps
   const categoryIcon =
     category?.id === 'ia-llm' ? 'robot' : category?.id === 'tooling' ? 'wrench' : 'layers';
 
+  const lang = languageSegment(language);
   return (
     <div className="guide-reading-layout">
       <div className="guide-main">
         <nav className="guide-breadcrumb" aria-label={strings.breadcrumb}>
-          <Link to="/$lang/" params={{ lang: language }} aria-label={strings.home}>
+          <Link to="/{-$lang}/" params={{ lang }} aria-label={strings.home}>
             <HandbookIcon name="home" />
           </Link>
           {category && (
             <>
               <HandbookIcon name="chevron" />
-              <Link to="/$lang/" params={{ lang: language }} hash={`category-${category.id}`}>
+              <Link to="/{-$lang}/" params={{ lang }} hash={`category-${category.id}`}>
                 {category.title[language]}
               </Link>
             </>
           )}
           <HandbookIcon name="chevron" />
-          <Link to="/$lang/$catalogId/" params={{ lang: language, catalogId: catalog.id }}>
+          <Link to="/{-$lang}/$catalogId/" params={{ lang, catalogId: catalog.id }}>
             {catalog.title[language]}
           </Link>
           <HandbookIcon name="chevron" />
@@ -372,8 +374,8 @@ export function GuidePage({ language, catalog, guide, markdown }: GuidePageProps
             {previous && (
               <Link
                 className="guide-pagination-link"
-                to="/$lang/$catalogId/$guideId/"
-                params={{ lang: language, catalogId: catalog.id, guideId: previous.id }}
+                to="/{-$lang}/$catalogId/$guideId/"
+                params={{ lang, catalogId: catalog.id, guideId: previous.id }}
               >
                 <span>{strings.previous}</span>
                 <strong>{previous.title[language]}</strong>
@@ -382,8 +384,8 @@ export function GuidePage({ language, catalog, guide, markdown }: GuidePageProps
             {next && (
               <Link
                 className="guide-pagination-link next"
-                to="/$lang/$catalogId/$guideId/"
-                params={{ lang: language, catalogId: catalog.id, guideId: next.id }}
+                to="/{-$lang}/$catalogId/$guideId/"
+                params={{ lang, catalogId: catalog.id, guideId: next.id }}
               >
                 <span>{strings.next}</span>
                 <strong>{next.title[language]}</strong>
@@ -412,8 +414,8 @@ export function GuidePage({ language, catalog, guide, markdown }: GuidePageProps
                 {entry.guides.map((item) => (
                   <li key={item.id}>
                     <Link
-                      to="/$lang/$catalogId/$guideId/"
-                      params={{ lang: language, catalogId: entry.id, guideId: item.id }}
+                      to="/{-$lang}/$catalogId/$guideId/"
+                      params={{ lang, catalogId: entry.id, guideId: item.id }}
                       activeOptions={{ exact: true }}
                     >
                       {item.title[language]}
@@ -468,8 +470,8 @@ export function GuidePage({ language, catalog, guide, markdown }: GuidePageProps
               {related.map((item) => (
                 <li key={item.id}>
                   <Link
-                    to="/$lang/$catalogId/$guideId/"
-                    params={{ lang: language, catalogId: catalog.id, guideId: item.id }}
+                    to="/{-$lang}/$catalogId/$guideId/"
+                    params={{ lang, catalogId: catalog.id, guideId: item.id }}
                   >
                     {item.title[language]}
                     <HandbookIcon name="arrow" />

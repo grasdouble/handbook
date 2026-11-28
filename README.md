@@ -13,11 +13,11 @@ pnpm dev
 
 `pnpm build` creates a static site in `dist/client`. Run `pnpm preview` to serve those exact files locally. To check changes, run `pnpm lint`, `pnpm format:check`, `pnpm typecheck` (after the build), `pnpm test`, and `pnpm test:e2e` (after `pnpm exec playwright install chromium`).
 
-The localized home pages (`/fr/` and `/en/`) introduce Handbook and list every published catalog by topic. The former `/fr/library/` and `/en/library/` URLs redirect to the corresponding home page. The guide index remains at `/fr/guides/` and `/en/guides/`.
+French is served at `/`, `/guides/`, and unprefixed catalog and guide URLs. English uses the same paths under `/en/`. Old `/fr/` URLs are not redirected. The former `/en/library/` URL still redirects to `/en/`.
 
 ## Site theme
 
-`src/handbook.css` defines the shared navigation, typography, and theme. The homepage, catalog pages, and guide index share an illustrated dark layout. Guide articles use `src/guide-page.css` and follow the system color preference until a reader chooses light or dark mode.
+Handbook uses a dark theme regardless of the system color preference. `src/handbook.css` defines the shared palette, `src/catalog-library.css` styles the homepage and catalog cards, and `src/guide-page.css` styles the reading layout.
 
 Guide index filters for topics and difficulty can be shared in the URL.
 
